@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('h2').innerText = 'Edit Your Game';
         tplSelect.style.display = 'none'; // hide template chooser
 
-        fetch(`http://localhost:4000/api/games/${gameId}`, {
+        fetch(`https://code-play-b0l6.onrender.com/api/games/${gameId}`, {
                 headers: { 'Authorization': 'Bearer ' + token }
             })
             .then(res => {
