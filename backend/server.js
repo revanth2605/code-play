@@ -171,5 +171,5 @@ app.get('/api/games/:id', requireAuth, async(req, res) => {
 
 // --- START SERVER ---
 app.listen(PORT, () => {
-    console.log(`🚀 Backend running on http://localhost:${PORT}`);
+    console.log(`🚀 Backend running on https://code-play-b0l6.onrender.com`);
 });
