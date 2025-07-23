@@ -16,7 +16,7 @@
     }
 
     try {
-        const res = await fetch(`http://localhost:4000/api/games/${gameId}`, {
+        const res = await fetch(`https://code-play-b0l6.onrender.com/api/games/${gameId}`, {
             headers: { 'Authorization': 'Bearer ' + token }
         });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
