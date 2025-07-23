@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe Fun</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+
+        .game-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .title {
+            font-size: 2.5em;
+            color: #e91e63;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .game-info {
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .current-player {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 15px;
+            display: inline-block;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .score-board {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .score-item {
+            background: #2196F3;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            min-width: 80px;
+        }
+
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 5px;
+            margin: 20px auto;
+            background: #333;
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        .cell {
+            background: white;
+            border: none;
+            font-size: 2.5em;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cell:hover {
+            background: #f0f0f0;
+            transform: scale(1.05);
+        }
+
+        .cell.x {
+            color: #e91e63;
+        }
+
+        .cell.o {
+            color: #2196F3;
+        }
+
+        .cell.winning {
+            background: #4CAF50 !important;
+            color: white !important;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .game-status {
+            font-size: 1.5em;
+            margin: 20px 0;
+            font-weight: bold;
+            min-height: 40px;
+        }
+
+        .winner {
+            color: #4CAF50;
+        }
+
+        .draw {
+            color: #FF9800;
+        }
+
+        .controls {
+            margin-top: 20px;
+        }
+
+        .reset-btn, .new-game-btn {
+            font-size: 1.1em;
+            padding: 12px 25px;
+            background: #e91e63;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s;
+        }
+
+        .reset-btn:hover, .new-game-btn:hover {
+            background: #c2185b;
+            transform: scale(1.05);
+        }
+
+        .emoji {
+            font-size: 2em;
+            margin: 10px 0;
+        }
+
+        .player-selection {
+            margin-bottom: 20px;
+        }
+
+        .player-btn {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            margin: 5px;
+            border: 2px solid #e91e63;
+            background: white;
+            color: #e91e63;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .player-btn.active {
+            background: #e91e63;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1 class="title">🎮 Tic Tac Toe</h1>
+        
+        <div class="score-board">
+            <div class="score-item">
+                <div>Player X</div>
+                <div id="score-x">0</div>
+            </div>
+            <div class="score-item">
+                <div>Draws</div>
+                <div id="score-draw">0</div>
+            </div>
+            <div class="score-item">
+                <div>Player O</div>
+                <div id="score-o">0</div>
+            </div>
+        </div>
+
+        <div class="game-info">
+            <div class="current-player" id="current-player">Player X's Turn</div>
+        </div>
+
+        <div class="game-board" id="game-board">
+            <button class="cell" onclick="makeMove(0, 0)"></button>
+            <button class="cell" onclick="makeMove(0, 1)"></button>
+            <button class="cell" onclick="makeMove(0, 2)"></button>
+            <button class="cell" onclick="makeMove(1, 0)"></button>
+            <button class="cell" onclick="makeMove(1, 1)"></button>
+            <button class="cell" onclick="makeMove(1, 2)"></button>
+            <button class="cell" onclick="makeMove(2, 0)"></button>
+            <button class="cell" onclick="makeMove(2, 1)"></button>
+            <button class="cell" onclick="makeMove(2, 2)"></button>
+        </div>
+
+        <div class="game-status" id="game-status">
+            <div class="emoji">🎯</div>
+        </div>
+
+        <div class="controls">
+            <button class="reset-btn" onclick="resetGame()">Reset Game</button>
+            <button class="new-game-btn" onclick="newRound()">New Round</button>
+        </div>
+    </div>
+
+    <script src="tic-tac-toe.js"></script>
+</body>
+</html>

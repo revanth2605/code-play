@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Play Saved Game – CodePlay™</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        header.navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+        }
+        
+        #playFrame {
+            width: 100%;
+            height: calc(100vh - 3.5rem);
+            border: none;
+            margin-top: 3.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="navbar__brand">
+            <a href="mygames.html" style="color:white;">← Back</a>
+            <span class="navbar__title" id="gameTitle">Loading…</span>
+        </div>
+    </header>
+
+    <iframe id="playFrame" sandbox="allow-scripts allow-modals"></iframe>
+
+    <script src="assets/js/viewer.js"></script>
+</body>
+
+</html>

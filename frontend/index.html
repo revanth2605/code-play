@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Login – CodePlay™</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+        /* ────────── New Header Styles ────────── */
+        
+        header.auth-header {
+            position: relative;
+            background: linear-gradient(180deg, #2962FF 0%, #00BCD4 100%);
+            padding: 1rem 2rem;
+            overflow: hidden;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        /* Layered SVG wave at bottom */
+        
+        header.auth-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,\
+<svg viewBox="0 0 1200 100" xmlns="http://www.w3.org/2000/svg">\
+  <path fill="%23FFFFFF" d="M0,50 C300,150 900,-50 1200,50 L1200,100 L0,100 Z" />\
+</svg>') no-repeat;
+            background-size: cover;
+            transform: translateY(50%);
+            opacity: 0.8;
+        }
+        
+        .auth-header .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .auth-header .logo img {
+            width: 32px;
+            height: 32px;
+            margin-right: 0.5rem;
+            animation: bounce 0.8s ease infinite alternate;
+        }
+        /* Mascot & speech bubble */
+        
+        .auth-header .mascot {
+            position: absolute;
+            right: 1rem;
+            bottom: 0.5rem;
+            width: 80px;
+            height: auto;
+        }
+        
+        .auth-header .speech {
+            position: absolute;
+            right: 100px;
+            bottom: 80px;
+            background: white;
+            color: #2962FF;
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+        }
+        
+        .auth-header .speech::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 90%;
+            border-width: 5px;
+            border-style: solid;
+            border-color: white transparent transparent transparent;
+        }
+        /* Bounce animation */
+        
+        @keyframes bounce {
+            to {
+                transform: translateY(-10%);
+            }
+        }
+        /* ───────── Existing Auth Container Styles ───────── */
+        
+        .auth-container {
+            max-width: 400px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .auth-container h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .auth-container label {
+            display: block;
+            margin-top: 1rem;
+        }
+        
+        .auth-container input {
+            width: 100%;
+            padding: .5rem;
+            margin-top: .25rem;
+        }
+        
+        body {
+            background: url('assets/images/back1.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+        
+        .auth-container button {
+            margin-top: 1.5rem;
+            width: 100%;
+            padding: .75rem;
+            background: #2962FF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+        }
+        
+        .auth-container .link {
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+            color: #2962FF;
+        }
+        
+        #status {
+            margin-top: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- New Header -->
+    <header class="auth-header">
+        <div class="logo">
+            <img src="assets/images/LOGO.png" alt="CodePlay Logo" /> CodePlay
+        </div>
+
+    </header>
+
+    <!-- Login Form -->
+    <div class="auth-container">
+        <h2>Login</h2>
+
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="you@example.com" />
+
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="••••••••" />
+
+        <button id="loginBtn">Log In</button>
+        <div id="status"></div>
+
+        <a href="register.html" class="link">Don’t have an account? Register</a>
+    </div>
+
+    <!-- load your auth logic -->
+    <script src="assets/js/auth.js"></script>
+    <script>
+        // initialize auth.js in “login” mode
+        Auth.init({
+            mode: 'login'
+        });
+    </script>
+</body>
+
+</html>

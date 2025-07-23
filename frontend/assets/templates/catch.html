@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch the Fruits</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            font-family: 'Comic Sans MS', cursive;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .game-container {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        
+        h1 {
+            color: #2d3436;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .game-info {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .info-box {
+            background: linear-gradient(45deg, #fd79a8, #e84393);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        #gameCanvas {
+            border: 4px solid #2d3436;
+            border-radius: 15px;
+            background: linear-gradient(180deg, #74b9ff 0%, #a29bfe 100%);
+            margin: 20px 0;
+        }
+        
+        .controls {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            background: linear-gradient(45deg, #00b894, #00a085);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .instructions {
+            background: #ddd6fe;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            color: #2d3436;
+        }
+        
+        .game-over {
+            color: #e17055;
+            font-size: 24px;
+            font-weight: bold;
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>🍎 Catch the Fruits</h1>
+        
+        <div class="game-info">
+            <div class="info-box">Score: <span id="score">0</span></div>
+            <div class="info-box">Lives: <span id="lives">3</span></div>
+            <div class="info-box">Level: <span id="level">1</span></div>
+        </div>
+        
+        <canvas id="gameCanvas" width="600" height="400"></canvas>
+        
+        <div class="controls">
+            <button onclick="moveBasket('left')">⬅️ LEFT</button>
+            <button onclick="moveBasket('right')">➡️ RIGHT</button>
+            <button id="startBtn" onclick="startGame()">🎮 START GAME</button>
+        </div>
+        
+        <div class="instructions">
+            <strong>How to Play:</strong><br>
+            • Move the basket left and right to catch falling fruits<br>
+            • Catch fruits to earn points: 🍎=10, 🍊=15, 🍌=20<br>
+            • Don't let fruits hit the ground or you'll lose a life<br>
+            • Use arrow keys or click the buttons to move
+        </div>
+    </div>
+    
+    <script src="catch-fruits.js"></script>
+</body>
+</html>

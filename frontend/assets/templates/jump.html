@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jump Adventure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .game-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        .title {
+            font-size: 2.5em;
+            color: #0984e3;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .game-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .stat {
+            background: #00b894;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+        }
+
+        .game-canvas {
+            border: 3px solid #0984e3;
+            border-radius: 10px;
+            background: linear-gradient(180deg, #74b9ff 0%, #a29bfe 50%, #6c5ce7 100%);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .controls {
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+
+        .control-info {
+            background: #fdcb6e;
+            color: #333;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .start-screen, .game-over-screen {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .start-btn, .restart-btn {
+            font-size: 1.3em;
+            padding: 15px 30px;
+            background: #0984e3;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+
+        .start-btn:hover, .restart-btn:hover {
+            background: #2d3436;
+            transform: scale(1.05);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .emoji {
+            font-size: 2em;
+            margin: 10px 0;
+        }
+
+        .instructions {
+            font-size: 1em;
+            margin: 15px 0;
+            color: #636e72;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <!-- Start Screen -->
+        <div id="start-screen" class="start-screen">
+            <h1 class="title">🏃‍♂️ Jump Adventure</h1>
+            <div class="emoji">🌟⭐🎯</div>
+            <div class="instructions">
+                <p>Help the hero jump over obstacles!</p>
+                <p>Press SPACEBAR or CLICK to jump</p>
+                <p>Avoid the red obstacles and collect coins!</p>
+            </div>
+            <button class="start-btn" onclick="startGame()">Start Adventure</button>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="game-over-screen" class="hidden game-over-screen">
+            <h1 class="title">Game Over!</h1>
+            <div class="emoji" id="game-over-emoji">💫</div>
+            <p style="font-size: 1.3em; margin: 15px 0;">Score: <span id="final-score">0</span></p>
+            <p style="font-size: 1.3em; margin: 15px 0;">Best: <span id="best-score">0</span></p>
+            <p id="performance-msg" style="margin: 15px 0;"></p>
+            <button class="restart-btn" onclick="restartGame()">Play Again</button>
+        </div>
+
+        <!-- Game Area -->
+        <div id="game-area" class="hidden">
+            <h1 class="title">🏃‍♂️ Jump Adventure</h1>
+            
+            <div class="game-stats">
+                <div class="stat">Score: <span id="score">0</span></div>
+                <div class="stat">Coins: <span id="coins">0</span></div>
+                <div class="stat">Best: <span id="high-score">0</span></div>
+            </div>
+
+            <canvas id="gameCanvas" class="game-canvas" width="750" height="400"></canvas>
+
+            <div class="controls">
+                <div class="control-info">
+                    Press <strong>SPACEBAR</strong> or <strong>CLICK</strong> to jump! 🚀
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="jump-adventure.js"></script>
+</body>
+</html>

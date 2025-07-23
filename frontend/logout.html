@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Logging Out… – CodePlay™</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+        .logout-container {
+            max-width: 400px;
+            margin: 4rem auto;
+            padding: 2rem;
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+        
+        .logout-container h2 {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logout-container">
+        <h2>Logging you out…</h2>
+        <p>Please wait.</p>
+    </div>
+
+    <script>
+        // Remove the saved token
+        localStorage.removeItem('cp_token');
+        // Redirect back to the login/index page
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 500);
+    </script>
+</body>
+
+</html>

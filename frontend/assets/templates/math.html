@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Quiz Adventure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .game-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            color: #333;
+        }
+
+        .title {
+            font-size: 2.5em;
+            color: #4a90e2;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .score-board {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .score {
+            background: #4CAF50;
+            padding: 10px 15px;
+            border-radius: 15px;
+            color: white;
+        }
+
+        .lives {
+            background: #f44336;
+            padding: 10px 15px;
+            border-radius: 15px;
+            color: white;
+        }
+
+        .question-area {
+            background: #fff3cd;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 3px solid #ffc107;
+        }
+
+        .question {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .answer-input {
+            font-size: 1.5em;
+            padding: 15px;
+            border: 3px solid #4a90e2;
+            border-radius: 10px;
+            width: 150px;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .submit-btn {
+            font-size: 1.2em;
+            padding: 15px 30px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #45a049;
+            transform: scale(1.05);
+        }
+
+        .feedback {
+            font-size: 1.5em;
+            margin: 20px 0;
+            font-weight: bold;
+            min-height: 30px;
+        }
+
+        .correct {
+            color: #4CAF50;
+        }
+
+        .wrong {
+            color: #f44336;
+        }
+
+        .game-over, .start-screen {
+            text-align: center;
+        }
+
+        .start-btn, .restart-btn {
+            font-size: 1.5em;
+            padding: 15px 30px;
+            background: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+
+        .start-btn:hover, .restart-btn:hover {
+            background: #357abd;
+            transform: scale(1.05);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .emoji {
+            font-size: 2em;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <!-- Start Screen -->
+        <div id="start-screen" class="start-screen">
+            <h1 class="title">🧮 Math Quiz Adventure</h1>
+            <div class="emoji">🌟✨🎯</div>
+            <p style="font-size: 1.2em; margin: 20px 0;">Test your math skills and become a Math Hero!</p>
+            <button class="start-btn" onclick="startGame()">Start Adventure</button>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="hidden">
+            <h1 class="title">🧮 Math Quiz</h1>
+            
+            <div class="score-board">
+                <div class="score">Score: <span id="score">0</span></div>
+                <div class="lives">Lives: <span id="lives">3</span></div>
+            </div>
+
+            <div class="question-area">
+                <div class="question" id="question">5 + 3 = ?</div>
+                <input type="number" class="answer-input" id="answer" placeholder="?">
+                <br>
+                <button class="submit-btn" onclick="checkAnswer()">Submit Answer</button>
+            </div>
+
+            <div class="feedback" id="feedback"></div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="game-over-screen" class="hidden game-over">
+            <h1 class="title">Game Over!</h1>
+            <div class="emoji" id="final-emoji">🎉</div>
+            <p style="font-size: 1.5em; margin: 20px 0;">Final Score: <span id="final-score">0</span></p>
+            <p id="performance-message" style="font-size: 1.2em; margin: 20px 0;"></p>
+            <button class="restart-btn" onclick="restartGame()">Play Again</button>
+        </div>
+    </div>
+
+    <script src="math-quiz.js"></script>
+</body>
+</html>

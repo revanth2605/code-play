@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>My Games – CodePlay™</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+        /* ────────── Fun Header Styles ────────── */
+        
+        header.navbar {
+            position: relative;
+            background: linear-gradient(180deg, #2962FF 0%, #00BCD4 100%);
+            padding: 1rem 2rem;
+            overflow: hidden;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        header.navbar::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 80px;
+            background: url('data:image/svg+xml;utf8,\
+<svg viewBox="0 0 1200 100" xmlns="http://www.w3.org/2000/svg">\
+  <path fill="%23FFFFFF" d="M0,50 C300,150 900,-50 1200,50 L1200,100 L0,100 Z" />\
+</svg>') no-repeat;
+            background-size: cover;
+            transform: translateY(50%);
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        
+        @keyframes bounce {
+            to {
+                transform: translateY(-10%);
+            }
+        }
+        
+        .navbar__brand {
+            display: flex;
+            align-items: center;
+            z-index: 1;
+        }
+        
+        .navbar__brand a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .navbar__menu {
+            display: flex;
+            gap: 1rem;
+            z-index: 1;
+        }
+        
+        .navbar__menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .navbar__menu a.active,
+        .navbar__menu a:hover {
+            text-decoration: underline;
+        }
+        
+        .navbar__logo {
+            width: 32px;
+            height: 32px;
+            margin-right: 0.5rem;
+            animation: bounce 0.8s ease infinite alternate;
+        }
+        
+        .header-mascot {
+            position: absolute;
+            right: 1rem;
+            bottom: 0.5rem;
+            width: 80px;
+            z-index: 1;
+        }
+        
+        body {
+            background: url('assets/images/back.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+        
+        .header-speech {
+            position: absolute;
+            right: 100px;
+            bottom: 80px;
+            background: white;
+            color: #2962FF;
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+            z-index: 1;
+        }
+        
+        .header-speech::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 90%;
+            border-width: 5px;
+            border-style: solid;
+            border-color: white transparent transparent transparent;
+        }
+        /* ────────── My Games Styles ────────── */
+        
+        .games-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .game-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .game-card h3 {
+            margin: 0;
+        }
+        /* Kid‑friendly button to match other pages */
+        
+        .game-card button {
+            padding: 0.5rem 1rem;
+            background: #29B6F6;
+            /* sky‑blue to match */
+            color: #fff;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .game-card button:hover {
+            background: #03A9F4;
+            /* deeper cyan on hover */
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="navbar__brand">
+            <img src="assets/images/LOGO.png" alt="CodePlay Logo" class="navbar__logo">
+            <a href="home.html">← CodePlay</a>
+        </div>
+        <nav class="navbar__menu">
+            <a href="home.html">Templates</a>
+            <a href="mygames.html" class="active">My Games</a>
+            <a href="logout.html">Logout</a>
+        </nav>
+
+    </header>
+
+    <main class="games-container">
+        <h1>My Saved Games</h1>
+        <div id="gamesList">Loading your games…</div>
+    </main>
+
+    <script src="assets/js/mygames.js"></script>
+</body>
+
+</html>
