@@ -11,7 +11,7 @@
 
     try {
         // Fetch all games for this user
-        const res = await fetch('http://localhost:4000/api/games', {
+        const res = await fetch('https://code-play-b0l6.onrender.com/api/games', {
             headers: {
                 'Authorization': 'Bearer ' + token
             }
